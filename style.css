@@ -67,4 +67,9 @@ button.active{
     padding:0 20px;
     justify-content:center;
   }
+ p {
+  width:80%;
+}
+ img{
+  width:100%;
 }
