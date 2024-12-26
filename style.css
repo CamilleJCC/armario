@@ -32,11 +32,10 @@ p {
 
 h1 {
     margin: 0;
-    font-size: calc(2vw + 2rem);
 }
 
 img {
-    width: 70vw; /* Responsive width */
+    width: 40vw; /* Responsive width */
     height: auto;
     padding: 10px;
     object-fit: contain; /* Ensures image maintains aspect ratio */
