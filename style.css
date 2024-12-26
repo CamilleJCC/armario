@@ -1,0 +1,69 @@
+ @font-face {
+            font-family: 'InterTight';
+            src: url('assets/Inter-VariableFont_slnt,wght.ttf') format('truetype');
+   font-weight: normal;
+        }
+
+html, body {
+  padding: 0;
+  font-family: 'InterTight';
+  margin:0 auto;
+  text-align:center;
+  background: #c4e0ff;
+  color: #e37d54;
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
+  height: 100vh;
+}
+canvas {
+  display: none;
+}
+p {
+  width:70vh;
+  margin:0 auto;
+}
+
+h1 {
+  margin:0;
+}
+
+img {
+  width: 70vh;
+  height: auto;
+ padding:10px;
+}
+
+button {
+  padding:10px 20px;
+  background:#FAF9F189; 
+  border:none;
+  border-radius:12px;
+  font-size:24px;
+  color:#e37d54;
+}
+
+button:hover{
+  color:#FAF9F1;
+  background:#e37d54;
+}
+
+button.active{
+  color:#FAF9F1;
+  background:#e37d54; 
+}
+
+.buttons{
+  display:flex;
+  flex-direction: row;
+  gap:10px;
+  flex-wrap:no-wrap;
+}
+
+@media screen and (max-width:1000px) {
+  .buttons{
+    flex-wrap:wrap;
+    padding:0 20px;
+    justify-content:center;
+  }
+}
