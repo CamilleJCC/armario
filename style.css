@@ -35,7 +35,7 @@ h1 {
 }
 
 img {
-    width: 40vw; /* Responsive width */
+    width: 48vw; /* Responsive width */
     height: auto;
     padding: 10px;
     object-fit: contain; /* Ensures image maintains aspect ratio */
@@ -66,7 +66,6 @@ button.active {
     flex-direction: row;
     gap: 10px;
     justify-content: center;
-    margin-top: 20px;
 }
 
 @media screen and (max-width: 1000px) {
