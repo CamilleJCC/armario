@@ -58,7 +58,7 @@ p {
     font-size: 16px;
     border: none;
     border-radius: 25px;
-    background: linear-gradient(45deg, #c4e0ff, #b5f0de);
+    border: solid 2px linear-gradient(45deg, #c4e0ff, #b5f0de);
     cursor: pointer;
     transition: all 0.3s;
 }
