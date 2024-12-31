@@ -55,7 +55,7 @@ p {
 .button-class {
     width: fit-content;
     padding: 15px 25px;
-    font-size: 16px;
+    font-size: 20px;
     border: none;
     border-radius: 25px;
     border: solid 2px linear-gradient(45deg, #c4e0ff, #b5f0de);
