@@ -3,14 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const textarea = document.querySelector('textarea');
     const submitBtn = document.querySelector('.submit-btn');
 
-    buttonsContainer.addEventListener('click', (e) => {
-        if (e.target.classList.contains('button-class')) {
-            e.target.classList.toggle('active');
-            createSparkles(e.target);
-        }
-    });
-
-    submitBtn.addEventListener('click', () => {
+    function addNewIdea() {
         if (textarea.value.trim()) {
             const newButton = document.createElement('button');
             newButton.className = 'button-class';
@@ -18,6 +11,22 @@ document.addEventListener('DOMContentLoaded', () => {
             buttonsContainer.appendChild(newButton);
             createSparkles(newButton);
             textarea.value = '';
+        }
+    }
+
+    buttonsContainer.addEventListener('click', (e) => {
+        if (e.target.classList.contains('button-class')) {
+            e.target.classList.toggle('active');
+            createSparkles(e.target);
+        }
+    });
+
+    submitBtn.addEventListener('click', addNewIdea);
+
+    textarea.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            addNewIdea();
         }
     });
 
