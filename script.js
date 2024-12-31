@@ -1,22 +1,26 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const buttons = document.querySelectorAll('.button-class');
+    const buttonsContainer = document.querySelector('.buttons-container');
     const textarea = document.querySelector('textarea');
     const submitBtn = document.querySelector('.submit-btn');
 
-    buttons.forEach(button => {
-        button.addEventListener('click', () => {
-            createSparkles(button);
-            button.classList.add('clicked');
-            setTimeout(() => button.classList.remove('clicked'), 500);
-        });
+    buttonsContainer.addEventListener('click', (e) => {
+        if (e.target.classList.contains('button-class')) {
+            e.target.classList.toggle('active');
+            createSparkles(e.target);
+        }
     });
 
     submitBtn.addEventListener('click', () => {
         if (textarea.value.trim()) {
-            createSparkles(submitBtn);
+            const newButton = document.createElement('button');
+            newButton.className = 'button-class';
+            newButton.textContent = textarea.value;
+            buttonsContainer.appendChild(newButton);
+            createSparkles(newButton);
             textarea.value = '';
         }
     });
+
 
     function createSparkles(element) {
         for (let i = 0; i < 20; i++) {
