@@ -11,7 +11,7 @@
     font-family:'InterTight', sans-serif;
 }
 
-.investigation-container {z
+.investigation-container {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -167,9 +167,10 @@ textarea {
 
 @media (min-width: 768px) {
     .investigation-container {
-        flex-direction: row;
+       flex-direction: row;
         align-items: flex-end;
         padding: 40px 80px;
+        height: 100vh;
     }
 
     .left-col {
