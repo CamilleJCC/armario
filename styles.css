@@ -111,7 +111,7 @@ textarea {
     justify-content: center;
 }
 
-.artwork img {
+.artwork {
     width: 100%;
     height: 100%;
     object-fit: contain;
@@ -150,7 +150,7 @@ textarea {
 @media (min-width: 768px) {
     .investigation-container {
         flex-direction: row;
-        align-items: flex-start;
+        align-items: flex-end;
         padding: 40px 80px;
     }
 
