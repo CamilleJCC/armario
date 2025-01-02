@@ -11,7 +11,7 @@
     font-family:'InterTight', sans-serif;
 }
 
-.investigation-container {
+.investigation-container {z
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -51,18 +51,16 @@ p {
 }
 
 .button-class {
-    width: fit-content;
+    margin-bottom: 0px;
     padding: 15px 25px;
-    font-size: 20px;
-    border: none;
-    border-radius: 25px;
-    border: 2px solid #c4e0ff;
-    cursor: pointer;
-    transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
+    border-radius: 100px;
+    font-family: 'InterTight', sans-serif;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transform-origin: center;
+    font-size: 23px;
+    width: fit-content;
+    flex: 0 1 auto;
     background: linear-gradient(45deg, #b5f0de, #c4e0ff);
-    transform: scale(1.05);
 }
 
 .button-class:hover {
