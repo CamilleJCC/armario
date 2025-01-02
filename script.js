@@ -41,4 +41,34 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => sparkle.remove(), 1000);
         }
     }
+    function createSparkles(element) {
+    const colors = ['#c4e0ff', '#b5f0de', '#ffffff'];
+    
+    for (let i = 0; i < 20; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        
+        // Random position around the element
+        const rect = element.getBoundingClientRect();
+        const x = rect.left + (Math.random() * rect.width);
+        const y = rect.top + (Math.random() * rect.height);
+        
+        sparkle.style.left = x + 'px';
+        sparkle.style.top = y + 'px';
+        sparkle.style.background = colors[Math.floor(Math.random() * colors.length)];
+        
+        document.body.appendChild(sparkle);
+        
+        // Remove sparkle after animation
+        sparkle.addEventListener('animationend', () => {
+            sparkle.remove();
+        });
+    }
+}
+
+// Call this function when revealing words
+function revealWord(element) {
+    element.style.display = 'block';
+    createSparkles(element);
+}
 });
