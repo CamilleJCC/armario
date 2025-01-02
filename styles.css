@@ -17,31 +17,34 @@ body {
 }
 
 .investigation-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 60px;
-    padding: 80px;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #faf9f1;
+    padding: 20px;
+    touch-action: none;
+    color: #333333;
 }
 
 .left-col {
-    width: 40%;
-    padding-right: 40px;
+    width: 100%;
+    padding-bottom: 40px;
 }
 
 h1 {
-    font-size: 3vw;
+    font-size: 2.5rem;
     color: #c4e0ff;
-    margin-bottom: 20px;
+    text-align: left;
+    line-height: 1em;
     font-weight: normal;
+    margin-bottom: 20px;
 }
 
 p {
-    font-size: 18px;
-    line-height: 1.6;
-    margin-bottom: 30px;
-    color: #666;
+    text-align: left;
+    font-size: 16px;
+    padding-bottom: 44px;
+    padding-right: 0;
 }
 
 .buttons-container {
@@ -78,15 +81,17 @@ p {
 }
 
 textarea {
-    width: 100%;
+  width: 100%;
     padding: 15px;
-    border: 2px solid #c4e0ff;
     border-radius: 10px;
-    font-size: 16px;
+    border: 2px solid #4a4a4a;
+    background: #c4e0ff;
     margin-bottom: 15px;
+    font-size: 20px;
+    height: 58px;
     resize: none;
     font-family: 'InterTight', sans-serif;
-        height: 60px;
+    overflow: hidden;
 }
 
 .submit-btn {
@@ -104,7 +109,22 @@ textarea {
 }
 
 .artwork-frame {
-    width: 51%;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    position: fixed;
+    cursor: none;
+    top: 0px;
+    right: 80px;
+}
+
+.artwork {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(255,255,255,0.1);
+    object-fit: contain;
+    margin-bottom: -19px;
 }
 
 .artwork-frame img {
