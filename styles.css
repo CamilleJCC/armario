@@ -81,7 +81,7 @@ h1 {
 p {
     text-align: left;
     font-size: clamp(1rem, 2vw, 1.125rem);
-    padding-bottom: clamp(1.5rem, 4vw, 2.75rem);
+    padding-bottom: 15px;
     padding-right: min(20%, 6rem);
     color: var(--secondary-color);
     line-height: 1.2;
@@ -115,11 +115,11 @@ p {
 .magic-input {
     width: 100%;
     padding: 0.9375rem;
-    border-radius: 1.0625rem;
+    border-radius: 13px;
     border: 2px solid var(--gradient-start);
     background: var(--background-color);
-    margin-bottom: 0.9375rem;
-    font-size: clamp(1rem, 2vw, 1.25rem);
+    margin-bottom: 7px;
+    font-size: clamp(1rem, 2vw, 1.125rem);
     height: 3.9375rem;
     resize: none;
     overflow: hidden;
