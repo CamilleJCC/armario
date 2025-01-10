@@ -62,10 +62,10 @@
 }
 
 h1 {
-    font-size: clamp(2rem, 5vw, 4.1rem);
+    font-size: clamp(2rem, 5.4em, 4.1rem);
     color: var(--primary-color);
     text-align: left;
-    line-height: 1.1;
+    line-height: 1.02;
     font-weight: normal;
     margin-bottom: clamp(1rem, 3vw, 1.25rem);
 }
