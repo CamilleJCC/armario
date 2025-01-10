@@ -57,6 +57,10 @@
   font-family: 'InterTight-Semibold';
 }
 
+.italic {
+  font-family: 'InterTight-Italic';
+}
+
 .artwork-frame {
     width: 100%;
     max-width: min(500px, 90vw);
