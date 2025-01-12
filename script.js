@@ -1,3 +1,34 @@
+npm install firebase
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+export { db };
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyBYISQS9bHDbPSz_WzGx7sG1gI_C-GfAzM",
+  authDomain: "mapfre-voltea.firebaseapp.com",
+  databaseURL: "https://mapfre-voltea-default-rtdb.firebaseio.com",
+  projectId: "mapfre-voltea",
+  storageBucket: "mapfre-voltea.firebasestorage.app",
+  messagingSenderId: "532381967364",
+  appId: "1:532381967364:web:c618827b0244d8bc65c151",
+  measurementId: "G-VSQSH2HGWF"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 document.addEventListener('DOMContentLoaded', () => {
     const magnifier = document.querySelector('.magnifying-glass');
     const artwork = document.querySelector('.artwork');
