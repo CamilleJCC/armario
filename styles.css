@@ -78,6 +78,10 @@ h1 {
     margin-bottom: clamp(1rem, 3vw, 1.25rem);
 }
 
+h2{
+    padding-right: min(20%, 6rem);
+}
+
 p {
     text-align: left;
     font-size: clamp(1rem, 2vw, 1.125rem);
