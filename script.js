@@ -1,3 +1,5 @@
+import { db } from './firebase-config.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     const magnifier = document.querySelector('.magnifying-glass');
     const artwork = document.querySelector('.artwork');
