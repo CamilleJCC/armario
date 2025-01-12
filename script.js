@@ -1,4 +1,5 @@
 import { db } from './firebase-config.js';
+import { ref, set, push } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     const magnifier = document.querySelector('.magnifying-glass');
@@ -63,13 +64,14 @@ document.addEventListener('DOMContentLoaded', () => {
     async function handleReveal() {
         if (input.value.trim()) {
             try {
-                // Add to Firebase
-                await addDoc(collection(db, 'kids-answers'), {
+                const answersRef = ref(db, 'kids-answers');
+                const newAnswerRef = push(answersRef);
+                
+                await set(newAnswerRef, {
                     answer: input.value,
-                    timestamp: serverTimestamp()
+                    timestamp: new Date().toISOString()
                 });
 
-                // Create visual element
                 const newAnswer = document.createElement('div');
                 newAnswer.className = 'revealed-answer reveal-animation';
                 newAnswer.textContent = input.value;
@@ -80,8 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 createSparkles(newAnswer);
                 input.value = '';
             } catch (error) {
-                console.error("Error adding document: ", error);
-                // Still show the answer even if Firebase fails
+                console.error("Error adding answer: ", error);
                 const newAnswer = document.createElement('div');
                 newAnswer.className = 'revealed-answer reveal-animation';
                 newAnswer.textContent = input.value;
@@ -95,7 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Event Listeners
     artwork.addEventListener('mousemove', updateZoom);
     artwork.addEventListener('mouseleave', () => {
         magnifier.style.display = 'none';
