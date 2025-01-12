@@ -1,8 +1,3 @@
-import { db } from './firebase-config.js';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import { getAnalytics } from "firebase/analytics";
-import { firebaseConfig } from './firebase-config';
-
 document.addEventListener('DOMContentLoaded', () => {
     const magnifier = document.querySelector('.magnifying-glass');
     const artwork = document.querySelector('.artwork');
