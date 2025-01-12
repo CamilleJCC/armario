@@ -1,14 +1,12 @@
 import { db } from './firebase-config.js';
 import { ref, set, push } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js';
-document.addEventListener('DOMContentLoaded', () => {
-    // Test Firebase connection
-    const testRef = ref(db, 'connection-test');
-    set(testRef, {
-        lastAccess: new Date().toISOString(),
-        status: 'connected'
-    });
-    
-    // Your existing code continues...
+
+// Test connection outside DOMContentLoaded
+const testRef = ref(db, 'connection-test');
+set(testRef, {
+    lastAccess: new Date().toISOString(),
+    status: 'connected'
+});
 
 document.addEventListener('DOMContentLoaded', () => {
     const magnifier = document.querySelector('.magnifying-glass');
