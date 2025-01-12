@@ -1,47 +1,7 @@
-// Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyBYISQS9bHDbPSz_WzGx7sG1gI_C-GfAzM",
-  authDomain: "mapfre-voltea.firebaseapp.com",
-  databaseURL: "https://mapfre-voltea-default-rtdb.firebaseio.com",
-  projectId: "mapfre-voltea",
-  storageBucket: "mapfre-voltea.firebasestorage.app",
-  messagingSenderId: "532381967364",
-  appId: "1:532381967364:web:c618827b0244d8bc65c151",
-  measurementId: "G-VSQSH2HGWF"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
+import { db } from './firebase-config.js';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-
-// Modified handleReveal function to store data in Firebase
-async function handleReveal() {
-    if (input.value.trim()) {
-        try {
-            // Add to Firebase
-            const docRef = await addDoc(collection(db, 'kids-answers'), {
-                answer: input.value,
-                timestamp: serverTimestamp()
-            });
-
-            // Create visual element
-            const newAnswer = document.createElement('div');
-            newAnswer.className = 'revealed-answer reveal-animation';
-            newAnswer.textContent = input.value;
-            newAnswer.style.position = 'relative';
-            newAnswer.style.background = getRandomColor();
-            
-            answersContainer.appendChild(newAnswer);
-            createSparkles(newAnswer);
-            input.value = '';
-            
-        } catch (error) {
-            console.error("Error adding document: ", error);
-        }
-    }
-}
+import { getAnalytics } from "firebase/analytics";
+import { firebaseConfig } from './firebase-config';
 
 document.addEventListener('DOMContentLoaded', () => {
     const magnifier = document.querySelector('.magnifying-glass');
@@ -73,11 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    artwork.addEventListener('mousemove', updateZoom);
-    artwork.addEventListener('mouseleave', () => {
-        magnifier.style.display = 'none';
-    });
-
     function createSparkles(element) {
         const rect = element.getBoundingClientRect();
         
@@ -108,20 +63,47 @@ document.addEventListener('DOMContentLoaded', () => {
         return colors[Math.floor(Math.random() * colors.length)];
     }
 
-    function handleReveal() {
+    async function handleReveal() {
         if (input.value.trim()) {
-            const newAnswer = document.createElement('div');
-            newAnswer.className = 'revealed-answer reveal-animation';
-            newAnswer.textContent = input.value;
-            newAnswer.style.position = 'relative';
-            newAnswer.style.background = getRandomColor();
-            
-            answersContainer.appendChild(newAnswer);
-            createSparkles(newAnswer);
-            input.value = '';
+            try {
+                // Add to Firebase
+                await addDoc(collection(db, 'kids-answers'), {
+                    answer: input.value,
+                    timestamp: serverTimestamp()
+                });
+
+                // Create visual element
+                const newAnswer = document.createElement('div');
+                newAnswer.className = 'revealed-answer reveal-animation';
+                newAnswer.textContent = input.value;
+                newAnswer.style.position = 'relative';
+                newAnswer.style.background = getRandomColor();
+                
+                answersContainer.appendChild(newAnswer);
+                createSparkles(newAnswer);
+                input.value = '';
+            } catch (error) {
+                console.error("Error adding document: ", error);
+                // Still show the answer even if Firebase fails
+                const newAnswer = document.createElement('div');
+                newAnswer.className = 'revealed-answer reveal-animation';
+                newAnswer.textContent = input.value;
+                newAnswer.style.position = 'relative';
+                newAnswer.style.background = getRandomColor();
+                
+                answersContainer.appendChild(newAnswer);
+                createSparkles(newAnswer);
+                input.value = '';
+            }
         }
     }
 
+    // Event Listeners
+    artwork.addEventListener('mousemove', updateZoom);
+    artwork.addEventListener('mouseleave', () => {
+        magnifier.style.display = 'none';
+    });
+    
     revealBtn.addEventListener('click', handleReveal);
     
     input.addEventListener('keypress', (e) => {
