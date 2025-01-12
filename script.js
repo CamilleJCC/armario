@@ -1,20 +1,4 @@
-npm install firebase
-import { initializeApp } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore';
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-export { db };
-
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBYISQS9bHDbPSz_WzGx7sG1gI_C-GfAzM",
   authDomain: "mapfre-voltea.firebaseapp.com",
@@ -28,7 +12,37 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+const db = getFirestore(app);
+
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+
+// Modified handleReveal function to store data in Firebase
+async function handleReveal() {
+    if (input.value.trim()) {
+        try {
+            // Add to Firebase
+            const docRef = await addDoc(collection(db, 'kids-answers'), {
+                answer: input.value,
+                timestamp: serverTimestamp()
+            });
+
+            // Create visual element
+            const newAnswer = document.createElement('div');
+            newAnswer.className = 'revealed-answer reveal-animation';
+            newAnswer.textContent = input.value;
+            newAnswer.style.position = 'relative';
+            newAnswer.style.background = getRandomColor();
+            
+            answersContainer.appendChild(newAnswer);
+            createSparkles(newAnswer);
+            input.value = '';
+            
+        } catch (error) {
+            console.error("Error adding document: ", error);
+        }
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const magnifier = document.querySelector('.magnifying-glass');
     const artwork = document.querySelector('.artwork');
