@@ -107,7 +107,6 @@ document.addEventListener('DOMContentLoaded', () => {
     closeButtons.forEach(button => {
         button.addEventListener('click', () => {
             overlay.style.display = 'none';
-            questionPopup.style.display = 'none';
         });
     });
 
