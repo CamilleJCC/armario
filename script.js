@@ -13,8 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const revealBtn = document.querySelector('.reveal-btn');
     const input = document.querySelector('.magic-input');
     const answersContainer = document.querySelector('.answers-container');
-    const questionBtn = document.getElementById('questionBtn');
-    const questionPopup = document.getElementById('questionPopup');
     const overlay = document.getElementById('overlay');
     const closeButtons = document.querySelectorAll('.close-btn');
     const tooltipText = document.querySelector('.tooltip-text');
@@ -95,10 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
         magnifier.style.display = 'none';
     });
 
-    questionBtn.addEventListener('click', () => {
-        overlay.style.display = 'block';
-        questionPopup.style.display = 'block';
-    });
+    
     plusBtn.addEventListener('click', () => {
         if (tooltipText.style.visibility === 'visible') {
             tooltipText.style.visibility = 'hidden';
@@ -107,11 +102,6 @@ document.addEventListener('DOMContentLoaded', () => {
             tooltipText.style.visibility = 'visible';
             tooltipText.style.display = 'block';
         }
-    });
-
-    overlay.addEventListener('click', () => {
-        overlay.style.display = 'none';
-        questionPopup.style.display = 'none';
     });
 
     closeButtons.forEach(button => {
