@@ -77,9 +77,11 @@ h1 {
     font-weight: normal;
     margin-bottom: clamp(1rem, 3vw, 1.25rem);
 }
+
 h2 {
 padding-right:min(20%, 6rem);
 }
+
 p {
     text-align: left;
     font-size: clamp(1rem, 2vw, 1.125rem);
@@ -471,7 +473,7 @@ font-size: 1.3rem;
     .artwork-frame{
         width:100%;
     }
-    p {
+    p, h2 {
     padding-right: 0px;
    
 }
