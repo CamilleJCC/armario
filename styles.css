@@ -77,7 +77,6 @@ h1 {
     font-weight: normal;
     margin-bottom: clamp(1rem, 3vw, 1.25rem);
 }
-
 h2 {
 padding-right:min(20%, 6rem);
 }
@@ -165,9 +164,12 @@ background: #b5f0de;
     margin-bottom: clamp(1rem, 2vw, 1.25rem);
 }
 .tooltip-container {
-    position: relative;
-    display: inline-block;
+     position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
     margin-top: 2rem;
+    justify-content: flex-end;
 }
 
 .plus-icon {
@@ -215,13 +217,15 @@ background: #b5f0de;
 
 
 .tooltip-text {
-visibility: hidden;
-    position: relative;
-    background: #87bafa;
+ position: absolute;
+    visibility: hidden;
+    display: none;
+    background: #c4e0ff;
     border-radius: 100px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     width: max-content;
-    margin-left: 10px;
+    right: 38px;
+    top: -4px;
     z-index: 1000;
     font-size: 1rem;
     padding: 0.6rem 1.3rem;
@@ -267,21 +271,6 @@ visibility: hidden;
     transform: rotate(90deg);
 }
 
-.tooltip-text {
-    visibility: hidden;
-    position: absolute;
-    left: 100%;
-    top: 50%;
-    transform: translateY(-50%);
-    background: #c4e0ff;
-    padding: 12px 25px;
-    border-radius: 100px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: max-content;
-    margin-left: 10px;
-    z-index: 1000;
-    font-size: clamp(1rem, 2vw, 1.125rem);
-}
 
 .tooltip-text.question{
     width: 26em;
@@ -437,13 +426,12 @@ font-size: 1.3rem;
 }
 
 
-/* Media Queries */
 @media (min-width: 768px) {
     .investigation-container {
         grid-template-columns: 1fr 1fr;
         padding: 0rem 1rem;
         align-items: center;
-        gap: 2rem;
+        gap: 4rem;
     }
 
     .left-col {
@@ -460,21 +448,40 @@ font-size: 1.3rem;
 
 @media (min-width: 1200px) {
     .investigation-container {
-        gap: 2rem;
+        gap: 0rem;
     }
     
     .artwork-frame {
-        max-width: 100%;
+        max-width: 78%;
         margin-left: auto;
     }
 }
-
-@media (max-width:768px) {
-    .artwork-frame{
-        width:100%;
+@media (max-width:1000px){
+    h2 {
+        width: 95%;
+        padding: 0px;
     }
-    p, h2 {
-    padding-right: 0px;
-   
+    li {
+        width:86%;
+    }
+    .popup {
+     width: 92%;
+    padding: 30px 22px;
+    }
+
+    p {
+        padding-right: 0px;
+    }
+    
+    .investigation-container{
+        width: 100vw;
+        padding-bottom: 132px;
+    }
+    .tooltip-text {
+    border-radius: 20px;
+    width: 100%;
+    top: 38px;
+    right: 0px;
+    padding: 0.9rem 2rem;
 }
 }
